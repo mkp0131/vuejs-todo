@@ -1,28 +1,43 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <h1>
+      {{ this.$store.state.siteName }} Todos
+      <p>안녕</p>
+    </h1>
+    <todo-list />
+    <todo-form />
+    <alert-modal v-if="showModal" @close="showModal = false" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import TodoList from "./components/TodoList.vue";
+import TodoForm from "./components/TodoForm.vue";
+import AlertModal from "./components/common/AlertModal.vue";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
-}
+    TodoList,
+    TodoForm,
+    AlertModal,
+  },
+  data: function () {
+    return {
+      showModal: false,
+    };
+  },
+  methods: {},
+  created: function () {
+    console.log("✅ 생성");
+  },
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+<style lang="scss" scoped>
+h1 {
+  color: red;
+  p {
+    background: blue;
+  }
 }
 </style>
